@@ -12,4 +12,18 @@ private Map<Vertex, List<Edge<Vertex>>> map;
     public void addVertex(Vertex vertex) {
         map.put(vertex, new LinkedList<>());
     }
+    private void validateVertex(Vertex index) {
+        if (!map.containsKey(index)) {
+            throw new IllegalArgumentException("Vertex " + index + " is out of the range");
+        }
+    }
+    public void removeEdge(Vertex source, Vertex destination) {
+        validateVertex(source);
+        validateVertex(destination);
+        List<Edge<Vertex>> neighbors = map.get(source);
+        if (neighbors!=null) {
+            neighbors.remove(destination);
+        }
+        map.get(destination).remove(source);
+    }
 }
