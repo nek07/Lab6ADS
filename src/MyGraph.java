@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MyGraph<Vertex> {
 private Map<Vertex, List<Edge<Vertex>>> map;
@@ -52,6 +49,19 @@ private Map<Vertex, List<Edge<Vertex>>> map;
             List<Edge<Vertex>> edges = map.get(source);
             edges.removeIf(edge -> edge.getDest() == destination);
         }
+    }
+    public Map<Vertex, Double> dijkstra(Vertex source) {
+        //created new empty HashMap
+        Map<Vertex, Double> distances = new HashMap<>();
+
+        //put all the vertices with weight which equals to infinity
+        for (Vertex vertex : map.keySet()) {
+            distances.put(vertex,(Double) Double.MAX_VALUE);
+        }
+
+        //put the start point(distance to start, and it's distance equals 0)
+        distances.put(source, (double) 0);
+        return distances;
     }
 
 }
