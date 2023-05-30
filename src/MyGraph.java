@@ -31,18 +31,27 @@ private Map<Vertex, List<Edge<Vertex>>> map;
         map.put(source, edges);
     }
 
-
+    public void printGraph() {
+        for (Vertex vertex : map.keySet()) {
+            List<Edge<Vertex>> edges = map.get(vertex);
+            System.out.print("Vertex " + vertex + ": ");
+            for (Edge edge : edges) {
+                System.out.print("(" + edge.getDest() + ", " + edge.getWeight() + ") ");
+            }
+            System.out.println();
+        }
+    }
     public void removeEdge(Vertex source, Vertex destination) {
         validateVertex(source);
         validateVertex(destination);
         removeDirectedEdge(source,destination);
         removeDirectedEdge(destination,source);
     }
-        public void removeDirectedEdge(Vertex source, Vertex destination) {
-            if (map.containsKey(source)) {
-                List<Edge<Vertex>> edges = map.get(source);
-                edges.removeIf(edge -> edge.getDest() == destination);
-            }
+    public void removeDirectedEdge(Vertex source, Vertex destination) {
+        if (map.containsKey(source)) {
+            List<Edge<Vertex>> edges = map.get(source);
+            edges.removeIf(edge -> edge.getDest() == destination);
+        }
     }
 
 }
