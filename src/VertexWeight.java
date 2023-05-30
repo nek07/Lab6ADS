@@ -7,8 +7,6 @@ class VertexWeight<Vertex> implements Comparable<VertexWeight> {
         this.distance = distance;
     }
 
-
-
     public Vertex getVertex() {
         return vertex;
     }
