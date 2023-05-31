@@ -61,6 +61,27 @@ private Map<Vertex, List<Edge<Vertex>>> map;
 
         //put the start point(distance to start, and it's distance equals 0)
         distances.put(source, (double) 0);
+        PriorityQueue<VertexWeight> queue = new PriorityQueue<>();
+        queue.add(new VertexWeight<>(source, 0));
+
+        while (!queue.isEmpty()) {
+            VertexWeight pair = queue.poll();
+            int vertex = (int) pair.getVertex();
+            int distance = (int) pair.getDistance();
+
+            if (distance > distances.get(vertex)) {
+                continue;
+            }
+
+            List<Edge<Vertex>> edges = map.get(vertex);
+            for (Edge edge : edges) {
+                int newDistance = (int) (distance + edge.getWeight());
+                if (newDistance < distances.get(edge.getDest())) {
+                    distances.put((Vertex) edge.getDest(), (double) newDistance);
+                    queue.add(new VertexWeight<>(edge.getDest(), newDistance));
+                }
+            }
+        }
         return distances;
     }
 
