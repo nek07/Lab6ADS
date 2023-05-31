@@ -103,12 +103,29 @@ private Map<Vertex, List<Edge<Vertex>>> map;
             }
         }
     }
-    public void BFS(Vertex startVertex){
+    public void BFS(Vertex startVertex) {
         validateVertex(startVertex);
-        Map<Vertex, Boolean> visited = new HashMap<>();
-        for(Vertex vertex : map.keySet()){
-            visited.put(vertex,false);
+        Set<Vertex> visited = new HashSet<>();
+        Queue<Vertex> vertices = new LinkedList<>();
+
+        vertices.add(startVertex);
+        visited.add(startVertex);
+
+        while(!vertices.isEmpty()){
+            Vertex v = vertices.poll();
+            System.out.print(v+" ");
+
+            List<Edge<Vertex>> edges = map.get(v);
+
+            for(Edge<Vertex> edge : edges){
+                if(!visited.contains(edge.getDest())){
+
+                    visited.add(edge.getDest());
+                    vertices.add(edge.getDest());
+                }
+            }
         }
+
     }
 
 }
