@@ -93,8 +93,6 @@ private Map<Vertex, List<Edge<Vertex>>> map;
         DFSHelper(start, visited);
 
     }
-
-
     private void DFSHelper(Vertex vertex, Map<Vertex, Boolean> visited) {
         visited.put(vertex, true);
         System.out.print(vertex + " ");
@@ -105,5 +103,13 @@ private Map<Vertex, List<Edge<Vertex>>> map;
             }
         }
     }
+    public void BFS(Vertex startVertex){
+        validateVertex(startVertex);
+        Map<Vertex, Boolean> visited = new HashMap<>();
+        for(Vertex vertex : map.keySet()){
+            visited.put(vertex,false);
+        }
+    }
+
 }
 
