@@ -84,5 +84,26 @@ private Map<Vertex, List<Edge<Vertex>>> map;
         }
         return distances;
     }
+    public void DFS(Vertex start) {
+        validateVertex(start);
+        Map<Vertex, Boolean> visited = new HashMap<>();
+        for (Vertex vertex:map.keySet()) {
+            visited.put(vertex,false);
+        }
+        DFSHelper(start, visited);
 
+    }
+
+
+    private void DFSHelper(Vertex vertex, Map<Vertex, Boolean> visited) {
+        visited.put(vertex, true);
+        System.out.print(vertex + " ");
+        List<Edge<Vertex>> edges = map.get(vertex);
+        for (Edge edge : edges) {
+            if (!visited.get(edge.getDest())){
+                DFSHelper((Vertex) edge.getDest(), visited);
+            }
+        }
+    }
 }
+
