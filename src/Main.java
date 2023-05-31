@@ -23,6 +23,8 @@ public class Main {
         mg.DFS(1);
         System.out.println("\nDijkstra");
         System.out.println(mg.dijkstra(1));
+        mg.removeEdge(5,6);
+        System.out.println(mg.dijkstra(1) + " - after removing 5-6 edge");
 
 
 
