@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 
 public class Main {
     public static void main(String[] args) {
-        MyGraph mg = new MyGraph();
+        MyWeightedGraph mg = new MyWeightedGraph();
         mg.addVertex(1);
         mg.addVertex(2);
         mg.addVertex(3);
