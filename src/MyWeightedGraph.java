@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class MyGraph<Vertex> {
+public class MyWeightedGraph<Vertex> {
 private Map<Vertex, List<Edge<Vertex>>> map;
-    public MyGraph() {
+    public MyWeightedGraph() {
         map = new HashMap<>();
     }
 
@@ -127,6 +127,5 @@ private Map<Vertex, List<Edge<Vertex>>> map;
         }
 
     }
-
 }
 
